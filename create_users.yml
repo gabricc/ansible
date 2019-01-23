@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+    - include_vars: /etc/ansible/playbooks/users.yml
+    - name: Adiciona usuarios
+      user: name={{item.username}} state=present shell=/bin/bash password=$1$lkFRPuxZ$QipUY9eLX7/KQuBP.f/h7.
+      with_items: '{{users}}'
+      tags: users
+
+# Adicionando usuário ao arquivo sudoers
+    - name: Sudoers | update sudoers file and validate
+      lineinfile: "dest=/etc/sudoers
+        insertafter=EOF
+        line='{{ item.username }} ALL=(ALL) NOPASSWD: ALL'
+        regexp='^{{ item.username }} .*'
+        state=present"
+      when: '{{ item.use_sudo }} == True'
+      with_items: '{{users}}'
