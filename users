@@ -1,0 +1,14 @@
+---
+users:
+  - username: zezin
+    use_sudo: no
+  - username: joaozin
+    use_sudo: yes
+  - username: mane
+    use_sudo: no
+  - username: gabriel
+    use_sudo: yes
+  - username: lorrane
+    use_sudo: no
+  - username: murillo
+    use_sudo: yes
