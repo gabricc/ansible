@@ -1,0 +1,6 @@
+---
+packages:
+  - name: tmux
+  - name: rsync
+  - name: lynis
+  - name: elinks
